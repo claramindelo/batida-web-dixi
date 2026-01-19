@@ -1,0 +1,229 @@
+/* Sidebar principal */
+.sidebar {
+  width: 80px;
+  height: 100vh;
+  background-color: #3b82f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s ease;
+  z-index: 999; /* Garante que fique acima de outros elementos */
+}
+
+/* Expande o sidebar ao passar o mouse */
+.sidebar:hover {
+  width: 280px;
+}
+
+/* Logo do sidebar */
+.sidebar-logo img {
+  background-color: #fff;
+  padding: 8px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+/* Imagem do logo */
+.logo-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Menu de navegação */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+}
+
+/* Item de navegação */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+  min-height: 70px; /* Altura mínima para acomodar ícone + texto */
+}
+
+/* Hover nos itens */
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Item ativo */
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 4px solid white;
+}
+
+/* Ícone do item */
+.nav-icon {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Não permite encolher */
+}
+
+/* Texto do item - CORRIGIDO */
+.nav-item span {
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 600; /* Negrito */
+  white-space: normal; /* PERMITE quebra de linha */
+  word-wrap: break-word; /* Quebra palavras longas */
+  max-width: 60px; /* Limita largura quando contraído */
+  display: block;
+}
+
+/* Quando o sidebar expande, muda layout dos itens */
+.sidebar:hover .nav-item {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 15px;
+  min-height: auto;
+}
+
+.sidebar:hover .nav-icon {
+  margin-bottom: 0;
+}
+
+.sidebar:hover .nav-item span {
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap; /* Não quebra quando expandido */
+  max-width: none; /* Remove limite de largura */
+}
+
+/* Perfil do usuário na parte inferior */
+.sidebar-profile {
+  width: 100%;
+  padding: 20px 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Avatar do perfil */
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Informações do perfil (escondidas quando contraído) */
+.profile-info {
+  display: none;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+/* Quando o sidebar expande, mostra as informações */
+.sidebar:hover .profile-info {
+  display: block;
+}
+
+/* Nome do usuário */
+.profile-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Empresa */
+.profile-company {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Matrícula */
+.profile-matricula {
+  font-size: 13px;
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Quando expandido, alinha perfil à esquerda */
+.sidebar:hover .sidebar-profile {
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 15px;
+  gap: 15px;
+}
+
+.sidebar:hover .profile-info {
+  text-align: left;
+}
+
+/* Ajuste para garantir que o conteúdo da página não fique por baixo do sidebar */
+.main-content {
+  margin-left: 80px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  
+  .sidebar:hover {
+    width: 250px;
+  }
+  
+  .nav-item {
+    padding: 12px 8px;
+    min-height: 65px;
+  }
+  
+  .nav-item span {
+    font-size: 10px;
+    max-width: 54px;
+  }
+  
+  .logo-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+  }
+}

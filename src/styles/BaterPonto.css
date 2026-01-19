@@ -1,0 +1,638 @@
+/* Estilo geral da página de Bater Ponto */
+.bater-ponto-page {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Título principal da página */
+.page-title {
+  font-size: 32px;
+  color: #3b82f6;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Subtítulo da página */
+.page-subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+/* Container principal que divide em duas colunas */
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* Coluna esquerda maior */
+  gap: 40px;
+  align-items: start;
+}
+
+/* Seção da câmera (lado esquerdo) */
+.camera-section {
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  padding: 40px;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estado quando a foto está desabilitada */
+.no-camera {
+  text-align: center;
+  color: #94a3b8;
+}
+
+.camera-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.no-camera p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Estado quando precisa de permissão da câmera */
+.camera-permission {
+  text-align: center;
+  color: #64748b;
+}
+
+.camera-icon-off {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.camera-permission p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.permission-hint {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 15px auto;
+  color: #64748b;
+}
+
+/* Botão para ativar permissão */
+.btn-permission {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+}
+
+.btn-permission:hover {
+  background-color: #1d4ed8;
+}
+
+/* Prévia da câmera ao vivo */
+.camera-preview {
+  width: 100%;
+  text-align: center;
+}
+
+/* Instrução acima do vídeo */
+.camera-instruction {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* CORREÇÃO: Container do vídeo com moldura */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #000;
+  aspect-ratio: 4/3; /* Define proporção da tela */
+}
+
+/* Elemento de vídeo da webcam */
+.video-feed {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Moldura de enquadramento do rosto */
+.face-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 350px;
+  border: 1px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5); /* Escurece ao redor */
+  pointer-events: none; /* Não interfere no clique */
+}
+
+
+/* Botão de capturar foto */
+.btn-capture {
+  padding: 14px 28px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.btn-capture:hover {
+  background-color: #1d4ed8;
+}
+
+/* Prévia da foto capturada */
+.photo-preview {
+  width: 100%;
+  text-align: center;
+}
+
+.photo-preview img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botões de ação da foto */
+.photo-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Botão de usar a foto */
+.btn-use-photo {
+  padding: 14px 28px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-use-photo:hover {
+  background-color: #059669;
+}
+
+/* Botão de tirar nova foto */
+.btn-retake {
+  padding: 14px 28px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-retake:hover {
+  background-color: #4b5563;
+}
+
+/* Painel lateral direito */
+.side-panel {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* NOVO: Display de data e hora */
+.time-display {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.day-label {
+  color: #3b82f6;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.time {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.seconds {
+  font-size: 24px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.date {
+  color: #3b82f6;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.info-text {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* Seção do toggle */
+.toggle-section {
+  margin-bottom: 30px;
+}
+
+/* Label do toggle */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  user-select: none; /* Não permite selecionar o texto */
+}
+
+/* Checkbox escondido (vamos usar um custom) */
+.toggle-checkbox {
+  display: none;
+}
+
+/* Slider customizado do toggle */
+.toggle-slider {
+  width: 50px;
+  height: 26px;
+  background-color: #cbd5e1;
+  border-radius: 13px;
+  position: relative;
+  transition: background-color 0.3s;
+  flex-shrink: 0; /* Não encolhe */
+}
+
+/* Bolinha do slider */
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+/* Quando o toggle está ativado */
+.toggle-checkbox:checked + .toggle-slider {
+  background-color: #3b82f6;
+}
+
+.toggle-checkbox:checked + .toggle-slider::before {
+  transform: translateX(24px); /* Move a bolinha para direita */
+}
+
+/* Texto ao lado do toggle */
+.toggle-text {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Botão de registrar ponto (sem foto) */
+.btn-register {
+  width: 100%;
+  padding: 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-register:hover {
+  background-color: #3b82f6;
+}
+
+/* Caixa de mensagem (sucesso ou erro) */
+.message-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+/* Mensagem de sucesso */
+.message-box.success {
+  background-color: #d1fae5;
+  border-color: #10b981;
+}
+
+.message-box.success h3 {
+  color: #065f46;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-box.success p {
+  color: #047857;
+  margin: 5px 0;
+}
+
+/* Mensagem de erro */
+.message-box.error {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+}
+
+.message-box.error h3 {
+  color: #991b1b;
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-box.error p {
+  color: #b91c1c;
+  margin: 5px 0;
+}
+
+/* Detalhes da mensagem (data e hora) */
+.message-details {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.message-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Foto na mensagem */
+.message-photo {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.message-photo img {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* MODAL DE PRÉVIA */
+.preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.preview-modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.preview-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.preview-modal-close:hover {
+  background-color: #dc2626;
+}
+
+.preview-modal-title {
+  color: #3b82f6;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.preview-photo-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.preview-photo {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-info {
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.preview-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.preview-info-row strong {
+  display: block;
+  color: #1e293b;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.preview-info-row p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+.preview-question {
+  text-align: center;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-preview-cancel {
+  flex: 1;
+  padding: 12px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-preview-cancel:hover {
+  background-color: #4b5563;
+}
+
+.btn-preview-confirm {
+  flex: 1;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-preview-confirm:hover {
+  background-color: #1d4ed8;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 1fr; /* Uma coluna só */
+  }
+  
+  .face-frame {
+    width: 250px;
+    height: 330px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bater-ponto-page {
+    padding: 20px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .time {
+    font-size: 36px;
+  }
+  
+  .seconds {
+    font-size: 20px;
+  }
+  
+  .camera-section {
+    padding: 20px;
+    min-height: 400px;
+  }
+  
+  .face-frame {
+    width: 200px;
+    height: 280px;
+  }
+  
+  .preview-modal-content {
+    padding: 20px;
+  }
+  
+  .preview-actions {
+    flex-direction: column;
+  }
+}
