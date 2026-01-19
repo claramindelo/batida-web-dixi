@@ -1,70 +1,195 @@
-# Getting Started with Create React App
+# 🕐 Sistema de Batida de Ponto - Dixi Soluções
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema web de registro e controle de ponto eletrônico desenvolvido com React, permitindo marcação com ou sem foto, validação de localização e histórico completo de registros.
 
-## Available Scripts
+## 📋 Sobre o Projeto
 
-In the project directory, you can run:
+Este projeto foi desenvolvido como parte de um desafio técnico para vaga de desenvolvimento web. O sistema permite que funcionários registrem seus pontos de entrada e saída, com recursos avançados de validação e rastreamento.
 
-### `npm start`
+## ✨ Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ✅ Requisitos Obrigatórios Implementados
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Marcação de Ponto com Validações**
+  - Intervalo mínimo de 1 minuto entre registros
+  - Marcações fora do intervalo são automaticamente desconsideradas
+  - Registro com data e hora precisos
 
-### `npm test`
+- **Sistema de Fotografia**
+  - Opção de registrar ponto com ou sem foto
+  - Preview da foto antes de confirmar
+  - Possibilidade de tirar nova foto
+  - Moldura de enquadramento facial
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Histórico Completo**
+  - Visualização de todas as marcações aprovadas
+  - Aba separada para marcações desconsideradas
+  - Filtro por data (período)
+  - Visualização de fotos das marcações
+  - Persistência de dados com localStorage
 
-### `npm run build`
+- **Validações e Tratamento de Erros**
+  - Validação de permissões de câmera
+  - Validação obrigatória de localização (GPS)
+  - Mensagens claras de erro
+  - Tratamento de casos de borda
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎯 Diferenciais Implementados
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Geolocalização**
+  - Captura automática de latitude e longitude
+  - Validação obrigatória de localização
+  - Visualização no Google Maps (clique no ícone de pin)
+  - Registro de localização mesmo em marcações desconsideradas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Interface Moderna**
+  - Design responsivo e intuitivo
+  - Sidebar com perfil do funcionário
+  - Modal de confirmação antes do registro
+  - Feedback visual em tempo real
+  - Animações suaves
 
-### `npm run eject`
+- **Dados Mockados**
+  - Perfil de funcionário (Clara Mindelo - Dixi Soluções)
+  - Matrícula: 1001
+  - Pronto para integração com backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠️ Tecnologias Utilizadas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React** 18.x - Biblioteca principal
+- **JavaScript (ES6+)** - Linguagem de programação
+- **CSS3** - Estilização
+- **Lucide React** - Biblioteca de ícones
+- **React Webcam** - Captura de fotos
+- **Geolocation API** - Captura de localização
+- **LocalStorage** - Persistência de dados no navegador
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Estrutura do Projeto
+```
+batida-web-dixi/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   └── Sidebar.jsx
+│   ├── pages/
+│   │   ├── BaterPonto.jsx
+│   │   └── HistoricoPonto.jsx
+│   ├── styles/
+│   │   ├── BaterPonto.css
+│   │   ├── Header.css
+│   │   ├── HistoricoPonto.css
+│   │   └── Sidebar.css
+│   ├── PontoContext.jsx
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   └── index.css
+├── package.json
+└── README.md
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Como Executar o Projeto
 
-## Learn More
+### Pré-requisitos
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js (versão 14 ou superior)
+- npm ou yarn
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Instalação
 
-### Code Splitting
+1. Clone o repositório
+```bash
+git clone https://github.com/claramindelo/batida-web-dixi.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Entre na pasta do projeto
+```bash
+cd batida-web-dixi
+```
 
-### Analyzing the Bundle Size
+3. Instale as dependências
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Execute o projeto
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+5. Acesse no navegador
+```
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### ⚠️ Permissões Necessárias
 
-### Advanced Configuration
+Para o funcionamento completo do sistema, é necessário:
+- ✅ Permitir acesso à **câmera** (para marcações com foto)
+- ✅ Permitir acesso à **localização** (obrigatório para todos os registros)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📸 Funcionalidades Detalhadas
 
-### Deployment
+### Marcação de Ponto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. **Sem Foto**
+   - Clique em "Registrar Ponto"
+   - Confirme no modal de prévia
+   - Sistema captura data, hora e localização automaticamente
 
-### `npm run build` fails to minify
+2. **Com Foto**
+   - Ative o toggle "Tirar Foto para Bater Ponto"
+   - Centralize o rosto na moldura
+   - Clique em "Capturar Foto"
+   - Confirme ou tire nova foto
+   - Clique em "Usar essa foto"
+   - Confirme no modal de prévia
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Regras de Validação
+
+- **Intervalo mínimo:** 1 minuto entre registros
+- **Localização:** Obrigatória (bloqueia registro se não disponível)
+- **Câmera:** Opcional, mas requer permissão se ativada
+
+### Histórico de Ponto
+
+- **Marcação Apropriada:** Registros válidos com data, hora, foto (quando houver) e localização
+- **Marcações Desconsideradas:** Registros bloqueados por proximidade temporal
+- **Filtros:** Pesquisa por período (data inicial e final)
+- **Visualização:** 
+  - Ícone de câmera azul = tem foto (clique para ver)
+  - Ícone de câmera cinza = sem foto
+  - Ícone de pin verde = ver localização no mapa
+  - Ícone de pin cinza = localização não disponível
+
+## 👤 Funcionário Mockado
+```
+Nome: Clara Mindelo
+Empresa: Dixi Soluções
+Matrícula: 1001
+```
+
+## 🔄 Próximos Passos (Backend)
+
+- [ ] API REST com Java/Spring Boot
+- [ ] Banco de dados MySQL
+- [ ] Autenticação de usuários
+- [ ] CRUD completo de funcionários
+- [ ] Testes automatizados (unitários e/ou integração) e/ou containerização 
+
+## 📝 Observações
+
+- Os dados são armazenados localmente no navegador (localStorage)
+- Para limpar o histórico: abra o Console (F12) e digite `localStorage.clear()`
+- O sistema valida permissões e mostra mensagens claras de erro
+
+## 👩‍💻 Desenvolvido por
+
+**[CLARA MINDELO]**
+
+Projeto desenvolvido como parte do desafio técnico para vaga de desenvolvimento web.
+
+---
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
