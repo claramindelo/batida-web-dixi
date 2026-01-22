@@ -1,10 +1,7 @@
-// Importando React e hooks
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Criando o contexto
 const PontoContext = createContext();
 
-// Hook customizado para usar o contexto facilmente
 export const usePonto = () => {
   const context = useContext(PontoContext);
   if (!context) {
@@ -13,129 +10,100 @@ export const usePonto = () => {
   return context;
 };
 
-// Provider que vai envolver toda a aplicação
 export const PontoProvider = ({ children }) => {
-  // Função para carregar dados do localStorage
-  const carregarRegistros = () => {
+  const [registros, setRegistros] = useState([]);
+  const [registrosDesconsiderados, setRegistrosDesconsiderados] = useState([]);
+
+  const API_URL = 'http://localhost:8080/api/ponto';
+
+  // Carrega os dados do backend quando o componente monta
+  useEffect(() => {
+    carregarRegistros();
+    carregarDesconsiderados();
+  }, []);
+
+  const carregarRegistros = async () => {
     try {
-      const registrosSalvos = localStorage.getItem('registrosPonto');
-      return registrosSalvos ? JSON.parse(registrosSalvos) : [];
+      const response = await fetch(`${API_URL}/registros`);
+      const data = await response.json();
+      setRegistros(data);
     } catch (error) {
       console.error('Erro ao carregar registros:', error);
-      return [];
     }
   };
 
-  const carregarDesconsiderados = () => {
+  const carregarDesconsiderados = async () => {
     try {
-      const desconsideradosSalvos = localStorage.getItem('registrosDesconsiderados');
-      return desconsideradosSalvos ? JSON.parse(desconsideradosSalvos) : [];
+      const response = await fetch(`${API_URL}/desconsiderados`);
+      const data = await response.json();
+      setRegistrosDesconsiderados(data);
     } catch (error) {
       console.error('Erro ao carregar desconsiderados:', error);
-      return [];
     }
   };
 
-  // Estado que armazena todos os registros de ponto
-  const [registros, setRegistros] = useState(carregarRegistros);
-  
-  // Estado que armazena as marcações desconsideradas
-  const [registrosDesconsiderados, setRegistrosDesconsiderados] = useState(carregarDesconsiderados);
-
-  // Salvar registros no localStorage sempre que mudar
-  useEffect(() => {
+  const adicionarRegistro = async (novoRegistro) => {
     try {
-      localStorage.setItem('registrosPonto', JSON.stringify(registros));
-    } catch (error) {
-      console.error('Erro ao salvar registros:', error);
-    }
-  }, [registros]);
-
-  // Salvar desconsiderados no localStorage sempre que mudar
-  useEffect(() => {
-    try {
-      localStorage.setItem('registrosDesconsiderados', JSON.stringify(registrosDesconsiderados));
-    } catch (error) {
-      console.error('Erro ao salvar desconsiderados:', error);
-    }
-  }, [registrosDesconsiderados]);
-
-  // Função para adicionar um novo registro
-  const adicionarRegistro = (novoRegistro) => {
-    // Formata a data (DD/MM/YYYY)
-    const dataFormatada = novoRegistro.time.toLocaleDateString('pt-BR');
-    
-    // Formata a hora (HH:MM)
-    const horaFormatada = novoRegistro.time.toLocaleTimeString('pt-BR', {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-
-    // Verifica se já existe um registro para essa data
-    const registroExistente = registros.find(r => r.data === dataFormatada);
-
-    if (registroExistente) {
-      // Se já existe, adiciona o horário com sua respectiva foto e localização ao array
-      setRegistros(registros.map(r => 
-        r.data === dataFormatada 
-          ? { 
-              ...r, 
-              horarios: [
-                ...r.horarios, 
-                {
-                  hora: horaFormatada,
-                  foto: novoRegistro.photo || null,
-                  latitude: novoRegistro.latitude || null,
-                  longitude: novoRegistro.longitude || null
-                }
-              ]
-            }
-          : r
-      ));
-    } else {
-      // Se não existe, cria um novo registro
-      const novoReg = {
-        id: Date.now(), // Usa timestamp como ID único
-        data: dataFormatada,
-        horarios: [
-          {
-            hora: horaFormatada,
-            foto: novoRegistro.photo || null,
-            latitude: novoRegistro.latitude || null,
-            longitude: novoRegistro.longitude || null
-          }
-        ]
+      const payload = {
+        // NÃO envia dataHora - o servidor usa LocalDateTime.now()
+        foto: novoRegistro.photo || null,
+        latitude: novoRegistro.latitude,
+        longitude: novoRegistro.longitude
       };
-      
-      // Adiciona no início do array (mais recente primeiro)
-      setRegistros([novoReg, ...registros]);
+
+      const response = await fetch(`${API_URL}/registrar`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log('✅ Ponto registrado no servidor às:', data.dataHoraServidor);
+        // Recarrega os registros após adicionar
+        await carregarRegistros();
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.error('Erro ao adicionar registro:', error);
+      throw error;
     }
   };
 
-  // Função para adicionar um registro desconsiderado
-  const adicionarRegistroDesconsiderado = (registroDesconsiderado) => {
-    // Formata a data (DD/MM/YYYY)
-    const dataFormatada = registroDesconsiderado.time.toLocaleDateString('pt-BR');
-    
-    // Formata a hora (HH:MM:SS) - com segundos para ser mais específico
-    const horaFormatada = registroDesconsiderado.time.toLocaleTimeString('pt-BR');
+  const adicionarRegistroDesconsiderado = async (registroDesconsiderado) => {
+    try {
+      const payload = {
+        // NÃO envia dataHora
+        motivo: registroDesconsiderado.motivo || 'Marcação desconsiderada por proximidade',
+        foto: registroDesconsiderado.photo || null,
+        latitude: registroDesconsiderado.latitude,
+        longitude: registroDesconsiderado.longitude
+      };
 
-    // Cria o registro desconsiderado
-    const novoDesconsiderado = {
-      id: Date.now(),
-      data: dataFormatada,
-      hora: horaFormatada,
-      motivo: registroDesconsiderado.motivo || 'Marcação desconsiderada por proximidade',
-      foto: registroDesconsiderado.photo || null,
-      latitude: registroDesconsiderado.latitude || null,
-      longitude: registroDesconsiderado.longitude || null
-    };
+      const response = await fetch(`${API_URL}/desconsiderado`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
 
-    // Adiciona no início do array (mais recente primeiro)
-    setRegistrosDesconsiderados([novoDesconsiderado, ...registrosDesconsiderados]);
+      const data = await response.json();
+
+      if (data.success) {
+        console.log('⚠️ Marcação desconsiderada no servidor às:', data.dataHoraServidor);
+        // Recarrega os desconsiderados após adicionar
+        await carregarDesconsiderados();
+      }
+    } catch (error) {
+      console.error('Erro ao adicionar desconsiderado:', error);
+    }
   };
 
-  // Valores que serão compartilhados com toda a aplicação
   const value = {
     registros,
     registrosDesconsiderados,
