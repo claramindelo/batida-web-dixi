@@ -258,8 +258,3 @@ Este projeto foi desenvolvido para fins educacionais e de avaliação técnica.
 ---
 
 ⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
-
-## 🔗 Links Relacionados
-
-- [Backend (API)](https://github.com/claramindelo/batida-ponto-api)
-- [Documentação da API](https://github.com/claramindelo/batida-ponto-api#-endpoints)
