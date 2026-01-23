@@ -164,56 +164,6 @@ Para o funcionamento completo do sistema, é necessário:
 
 ✅ **Permitir acesso à localização** (obrigatório para todos os registros)
 
-## 📸 Funcionalidades Detalhadas
-
-### Marcação de Ponto
-
-#### Sem Foto
-1. Clique em "Registrar Ponto"
-2. Confirme no modal de prévia
-3. Sistema captura **data/hora do servidor** e localização automaticamente
-
-#### Com Foto
-1. Ative o toggle "Tirar Foto para Bater Ponto"
-2. Permita acesso à câmera
-3. Centralize o rosto na moldura
-4. Clique em "Capturar Foto"
-5. Confirme ou tire nova foto
-6. Clique em "Usar essa foto"
-7. Confirme no modal de prévia
-
-### Regras de Validação
-
-| Validação | Comportamento |
-|-----------|---------------|
-| **Intervalo mínimo** | 1 minuto entre registros (validado no servidor) |
-| **Localização** | Obrigatória - bloqueia registro se não disponível |
-| **Câmera** | Opcional - requer permissão se ativada |
-| **Data/Hora** | Sempre do servidor |
-
-### Histórico de Ponto
-
-#### Marcação Apropriada
-- Registros válidos com data, hora, foto (quando houver) e localização
-- Horário validado pelo servidor
-- Intervalo mínimo respeitado
-
-#### Marcações Desconsideradas
-- Registros bloqueados por proximidade temporal
-- Histórico completo de tentativas inválidas
-- Data, hora e motivo da rejeição
-
-#### Filtros
-- Pesquisa por período (data inicial e final)
-- Funciona para ambas as abas
-
-#### Visualização
-- 📷 Ícone de câmera **azul** = tem foto (clique para ver)
-- 📷 Ícone de câmera **cinza** = sem foto
-- 📍 Ícone de pin **verde** = ver localização no mapa
-- 📍 Ícone de pin **cinza** = localização não disponível
-
-```
 
 ## 🌐 API Endpoints Consumidos
 
@@ -225,11 +175,6 @@ Para o funcionamento completo do sistema, é necessário:
 | `GET` | `/api/ponto/desconsiderados` | Lista desconsiderados |
 | `GET` | `/api/ponto/filtrar?dataInicial=&dataFinal=` | Filtra por período |
 
-## 👤 Funcionário Mockado
-
-- **Nome**: Clara Mindelo
-- **Empresa**: Dixi Soluções
-- **Matrícula**: 1001
 
 ## 📝 Observações
 
