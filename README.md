@@ -161,6 +161,7 @@ http://localhost:3000
 Para o funcionamento completo do sistema, é necessário:
 
 ✅ **Permitir acesso à câmera** (para marcações com foto)
+
 ✅ **Permitir acesso à localização** (obrigatório para todos os registros)
 
 ## 📸 Funcionalidades Detalhadas
