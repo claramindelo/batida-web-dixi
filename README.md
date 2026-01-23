@@ -82,7 +82,7 @@ O projeto é dividido em duas partes:
 
 ### Backend
 - **Java 21** - Linguagem de programação
-- **Spring Boot 3.2.2** - Framework
+- **Spring Boot 4.1.0** - Framework
 - **Maven** - Gerenciador de dependências
 - **Lombok** - Redução de boilerplate
 - Repositório: [batida-ponto-api](https://github.com/claramindelo/batida-ponto-api)
@@ -244,9 +244,6 @@ Certifique-se de que o backend está com CORS habilitado para `http://localhost:
 
 ### Backend não encontrado
 Verifique se o backend está rodando em `http://localhost:8080`
-
-### Permissões negadas
-Certifique-se de permitir acesso à câmera e localização no navegador
 
 ## 👩‍💻 Desenvolvido por
 
