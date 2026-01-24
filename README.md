@@ -156,6 +156,7 @@ npm start
 http://localhost:3000
 ```
 
+<<<<<<< HEAD
 ## ⚠️ Permissões Necessárias
 
 Para o funcionamento completo do sistema, é necessário:
@@ -165,6 +166,8 @@ Para o funcionamento completo do sistema, é necessário:
 ✅ **Permitir acesso à localização** (obrigatório para todos os registros)
 
 
+=======
+>>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
 ## 🌐 API Endpoints Consumidos
 
 | Método | Endpoint | Descrição |
@@ -175,7 +178,10 @@ Para o funcionamento completo do sistema, é necessário:
 | `GET` | `/api/ponto/desconsiderados` | Lista desconsiderados |
 | `GET` | `/api/ponto/filtrar?dataInicial=&dataFinal=` | Filtra por período |
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
 ## 📝 Observações
 
 - O backend armazena dados **em memória (RAM)**
@@ -203,4 +209,8 @@ Este projeto foi desenvolvido para fins educacionais e de avaliação técnica.
 
 ---
 
+<<<<<<< HEAD
 ⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
+=======
+⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
+>>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
