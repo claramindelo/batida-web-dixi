@@ -175,7 +175,6 @@ Para o funcionamento completo do sistema, é necessário:
 | `GET` | `/api/ponto/desconsiderados` | Lista desconsiderados |
 | `GET` | `/api/ponto/filtrar?dataInicial=&dataFinal=` | Filtra por período |
 
-
 ## 📝 Observações
 
 - O backend armazena dados **em memória (RAM)**
