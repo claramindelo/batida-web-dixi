@@ -156,7 +156,6 @@ npm start
 http://localhost:3000
 ```
 
-<<<<<<< HEAD
 ## ⚠️ Permissões Necessárias
 
 Para o funcionamento completo do sistema, é necessário:
