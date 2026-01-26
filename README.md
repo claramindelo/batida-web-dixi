@@ -37,6 +37,12 @@ O projeto é dividido em duas partes:
 - Visualização de fotos das marcações
 - Persistência de dados via API REST
 
+#### Visualização
+- 📷 Ícone de câmera **azul** = tem foto (clique para ver)
+- 📷 Ícone de câmera **cinza** = sem foto
+- 📍 Ícone de pin **verde** = ver localização no mapa
+- 📍 Ícone de pin **cinza** = localização não disponível
+
 #### Validações e Tratamento de Erros
 - Validação de permissões de câmera
 - Validação obrigatória de localização (GPS)
@@ -166,7 +172,7 @@ Para o funcionamento completo do sistema, é necessário:
 
 
 =======
->>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
+
 ## 🌐 API Endpoints Consumidos
 
 | Método | Endpoint | Descrição |
@@ -177,15 +183,13 @@ Para o funcionamento completo do sistema, é necessário:
 | `GET` | `/api/ponto/desconsiderados` | Lista desconsiderados |
 | `GET` | `/api/ponto/filtrar?dataInicial=&dataFinal=` | Filtra por período |
 
-<<<<<<< HEAD
-
 =======
->>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
+
 ## 📝 Observações
 
-- O backend armazena dados **em memória (RAM)**
-- Ao reiniciar o servidor backend, os dados são perdidos
-- Para produção, é recomendado adicionar um banco de dados
+- O backend armazena dados **permanentemente no MySQL**
+- Os dados **NÃO são perdidos** ao reiniciar o backend
+- Para limpar o histórico, acesse o MySQL diretamente
 - O sistema valida permissões e mostra mensagens claras de erro
 
 ## 🐛 Troubleshooting
@@ -208,8 +212,4 @@ Este projeto foi desenvolvido para fins educacionais e de avaliação técnica.
 
 ---
 
-<<<<<<< HEAD
 ⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
-=======
-⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
->>>>>>> 2a9a573 (docs: atualiza README com integração backend e segurança)
