@@ -11,7 +11,7 @@ Este projeto foi desenvolvido como parte de um desafio técnico para vaga de des
 O projeto é dividido em duas partes:
 
 - **Frontend (este repositório)**: Interface React para interação do usuário
-- **Backend**: API REST Spring Boot - [batida-ponto-api](https://github.com/claramindelo/batida-ponto-api)
+- **Backend**: API REST Spring Boot - [batida-ponto-api-maven](https://github.com/claramindelo/batida-ponto-api-maven)
 
 ## ✨ Funcionalidades
 
@@ -85,7 +85,7 @@ O projeto é dividido em duas partes:
 - **Spring Boot 4.1.0** - Framework
 - **Maven** - Gerenciador de dependências
 - **Lombok** - Redução de boilerplate
-- Repositório: [batida-ponto-api](https://github.com/claramindelo/batida-ponto-api)
+- Repositório: [batida-ponto-api-maven](https://github.com/claramindelo/batida-ponto-api-maven)
 
 ## 📁 Estrutura do Projeto
 ```
@@ -118,7 +118,7 @@ batida-web-dixi/
 ### Pré-requisitos
 - **Node.js** (versão 14 ou superior)
 - **npm** ou **yarn**
-- **Backend rodando** - [Instruções aqui](https://github.com/claramindelo/batida-ponto-api)
+- **Backend rodando** - [Instruções aqui](https://github.com/claramindelo/batida-ponto-api-maven)
 
 ### Instalação
 
@@ -144,7 +144,7 @@ const API_URL = 'http://localhost:8080/api/ponto'; // Altere aqui se necessário
 
 #### 4. Inicie o backend
 
-Certifique-se de que o backend está rodando na porta 8080. [Veja como](https://github.com/claramindelo/batida-ponto-api)
+Certifique-se de que o backend está rodando na porta 8080. [Veja como](https://github.com/claramindelo/batida-ponto-api-maven)
 
 #### 5. Execute o frontend
 ```bash
