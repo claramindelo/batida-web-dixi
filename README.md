@@ -71,7 +71,8 @@ O projeto é dividido em duas partes:
 - Animações suaves
 
 #### Dados Mockados
-- Perfil de funcionário (Clara Mindelo - Dixi Soluções)
+- Perfil de funcionário: Maria Silva
+- Empresa: Dixi Soluções
 - Matrícula: 1001
 - Pronto para integração com sistema de autenticação
 
@@ -87,10 +88,12 @@ O projeto é dividido em duas partes:
 - **Fetch API** - Comunicação com backend
 
 ### Backend
-- **Java 21** - Linguagem de programação
-- **Spring Boot 4.1.0** - Framework
-- **Maven** - Gerenciador de dependências
-- **Lombok** - Redução de boilerplate
+- **Java 21**
+- **Spring Boot 4.0.2**
+- **Maven**
+- **MySQL 8.0**
+- **Spring Data JPA / Hibernate**
+- **Lombok**
 - Repositório: [batida-ponto-api-maven](https://github.com/claramindelo/batida-ponto-api-maven)
 
 ## 📁 Estrutura do Projeto
@@ -199,12 +202,6 @@ Certifique-se de que o backend está com CORS habilitado para `http://localhost:
 
 ### Backend não encontrado
 Verifique se o backend está rodando em `http://localhost:8080`
-
-## 👩‍💻 Desenvolvido por
-
-**Clara Mindelo**
-
-Projeto desenvolvido como parte do desafio técnico para vaga de desenvolvimento web.
 
 ## 📄 Licença
 
